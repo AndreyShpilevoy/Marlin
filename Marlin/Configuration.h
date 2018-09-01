@@ -74,10 +74,10 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_CONFIG_H_AUTHOR "(DaHai, Auto Bed Level)" // Who made the changes. DaHai: Change if you wish - informational only
+#define STRING_CONFIG_H_AUTHOR "(DaHai, Auto Bed Level, tuned by kto)" // Who made the changes. DaHai: Change if you wish - informational only
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 "1.1.9" // will be shown during bootup in line 1
-#define STRING_SPLASH_LINE2 "DaHai Auto Bed Level"         // will be shown during bootup in line 2. DaHai - Change if you wish - informational only
+#define STRING_SPLASH_LINE2 "tuned by kto"         // will be shown during bootup in line 2. DaHai - Change if you wish - informational only
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -547,10 +547,10 @@
   #endif
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 90.0 // mm. DaHai: From Anycubic Kossle source
+  #define DELTA_PRINTABLE_RADIUS 115.0 // mm. DaHai: From Anycubic Kossle source. kto: adjusted according to new Linear printer
 
   // Center-to-center distance of the holes in the diagonal push rods.
-  #define DELTA_DIAGONAL_ROD 218.0 // mm. DaHai: From Anycubic Kossle source  
+  #define DELTA_DIAGONAL_ROD 267.0 // mm. DaHai: From Anycubic Kossle source. kto: adjusted according to new Linear printer
 
   // height from z=0 to home position
   #define DELTA_HEIGHT 334.88 // // mm. DaHai: This will be overriden and set in EEPROM when saving Auto Calibrate results
@@ -602,13 +602,13 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define X_MIN_ENDSTOP_INVERTING true  // we have no X_MIN endstop// set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING true  // we have no Y_MIN endstop// set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING true  // we have no Z_MIN endstop// set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the probe.
+#define Z_MIN_PROBE_ENDSTOP_INVERTING true // set to true to invert the logic of the probe.
 
 /**
  * Specify Stepper Driver types
@@ -621,9 +621,9 @@
  *          TMC5130, TMC5130_STANDALONE
  * :['A4988', 'DRV8825', 'LV8729', 'L6470', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2130_STANDALONE // DaHai: I have TMC2130s installed on XYZ in Standalone (Dumb/non-SPI) -
-#define Y_DRIVER_TYPE  TMC2130_STANDALONE // DaHai: So change these values to the drivers you have on your AnyCubic Delta
-#define Z_DRIVER_TYPE  TMC2130_STANDALONE
+#define X_DRIVER_TYPE  TMC2100 // kto: I have TMC2100s installed on XYZ -
+#define Y_DRIVER_TYPE  TMC2100 // kto: So change these values to the drivers you have on your AnyCubic Delta
+#define Z_DRIVER_TYPE  TMC2100
 #define X2_DRIVER_TYPE A4988
 #define Y2_DRIVER_TYPE A4988
 #define Z2_DRIVER_TYPE A4988
@@ -1630,6 +1630,9 @@
 // Note: Usually sold with a white PCB.
 //
 #define REPRAP_DISCOUNT_SMART_CONTROLLER // DaHai: This is the default controller on the AnyCubic Kossel
+#define ST7920_DELAY_1 DELAY_0_NOP
+#define ST7920_DELAY_2 DELAY_1_NOP
+#define ST7920_DELAY_3 DELAY_2_NOP
 
 //
 // ULTIMAKER Controller.
